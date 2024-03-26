@@ -12,8 +12,8 @@ const photosApi = createApi ({
     endpoints(builder){
         return {
             fetchPhotos :builder.query({
-                providesTags: (result,error, album) =>{
-                    const tags = result.map((photo)=>{
+                providesTags: (results,error, album) =>{
+                    const tags = results.map((photo)=>{
                         return{type:'Photo',id:photo.id};
                     });
                     tags.push({type:'AlbumPhoto',id:album.id});
@@ -39,10 +39,10 @@ const photosApi = createApi ({
                         method:'POST',
                         body : {
                             albumId: album.id,
-                            url: faker.image.abstract(150,150,true)
-                        }
+                            url: faker.image.urlLoremFlickr({height: 150, width: 150, category: 'nature'} )
+                        },
                     };
-                }
+                },
             }),
             removePhoto: builder.mutation({
                 invalidatesTags: (result,error, photo) =>{

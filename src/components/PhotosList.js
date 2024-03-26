@@ -4,20 +4,13 @@ import Skeleton from './Skeleton';
 import PhotosListItem from './PhotosListItem';
 
 
-
-
-
-
-
-
-
-function PhotosList ( {album }){
+function PhotosList ( {album}){
     const  {data,isFetching,error} = useFetchAlbumsQuery(album);
     const [addPhoto, addPhotoResults] = useAddPhotoMutation();
 
 
     const  handleAddPhoto  = () =>{
-        addPhoto(album)
+        addPhoto(album);
     };
 
 
@@ -29,6 +22,8 @@ function PhotosList ( {album }){
     } else{
         content = data.map( photo =>{
             return <PhotosListItem key={photo.id} photo={photo}/>
+            
+          
         });
     }
 
@@ -44,7 +39,7 @@ function PhotosList ( {album }){
             {content}
             </div>
         </div>
-    )
+    );
 
 }
 

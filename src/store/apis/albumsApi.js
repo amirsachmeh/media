@@ -23,14 +23,21 @@ const albumsApi = createApi ({
     }),
     endpoints(builder){
         return {
-            removeAlbum: builder.mutation({
-                invalidatesTags: (result, error ,album) =>{
-                    return[{type:'Album',id:album.id}];
+            fetchAlbums: builder.query({
+                providesTags: (results,error ,user)=>{
+                    const tags = results.map( album =>{
+                        return {type:'Album', id :album.id}
+                    });
+                    tags.push({type:'UsersAlbums', id: user.id});
+                    return tags;
                 },
-                query: (album) =>{
-                    return{
-                        url: `/albums/${album.id}`,
-                        method: 'DELETE',
+                query:(user) =>{
+                    return {
+                        url:'/albums',
+                        params:{
+                            userId: user.id,
+                        },
+                        method : 'GET',
                     };
                 },
             }),
@@ -49,21 +56,14 @@ const albumsApi = createApi ({
                     };
                 },
             }),
-            fetchAlbums: builder.query({
-                providesTags: (results,error ,user)=>{
-                    const tags = results.map( album =>{
-                        return {type:'Album', id :album.id}
-                    });
-                    tags.push({type:'UsersAlbums', id: user.id});
-                    return tags;
+            removeAlbum: builder.mutation({
+                invalidatesTags: (result, error ,album) =>{
+                    return[{type:'Album',id:album.id}];
                 },
-                query:(user) =>{
-                    return {
-                        url:'/albums',
-                        params:{
-                            userId: user.id,
-                        },
-                        method : 'GET',
+                query: (album) =>{
+                    return{
+                        url: `/albums/${album.id}`,
+                        method: 'DELETE',
                     };
                 },
             }),

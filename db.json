@@ -1,42 +1,27 @@
 {
   "users": [
     {
-      "name": "Darnell Anderson",
-      "id": 6
+      "name": "Lola Leuschke",
+      "id": 1
     }
   ],
   "albums": [
     {
-      "userId": 6,
-      "title": "Licensed Plastic Bike",
+      "userId": 1,
+      "title": "Luxurious Plastic Ball",
       "id": 1
     }
   ],
   "photos": [
     {
       "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=1134930759254016",
+      "url": "https://loremflickr.com/150/150/nature?lock=6097096054669312",
       "id": 1
     },
     {
       "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=580872606580736",
+      "url": "https://loremflickr.com/150/150/nature?lock=1541565157736448",
       "id": 2
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=6031391319916544",
-      "id": 3
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=5987574856286208",
-      "id": 4
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=289991085260800",
-      "id": 5
     }
   ]
 }
